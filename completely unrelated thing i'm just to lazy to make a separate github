@@ -1,0 +1,62 @@
+import random
+
+
+# Player stats
+player_health = 100
+# shields and armor add to defense
+player_defense = 1
+# weapons affect damage
+player_damage = 5
+# kills assign arbitrary amount of experience
+player_experience = 0
+print("You awaken in appears to be some left over ruins, you can hear a large group of people nearby yelling.")
+print("Wake up! The show starts soon. Get yer weapons ready. Lotta folks watching so make a good show.")
+print("Just 'member if you want freedom then you have to fight for it out their. 7 tournaments and ")
+print("then whatever is left of you gets to leave. The man walks over to you. 'You, yeah you, what's your name?'")
+player_name = input("")
+print("'{}... you're up against... Token. Shite. Listen carefully, this is Tokens last fight.'".format(player_name))
+print("'Folks in 'ere don't usually make it that far. The Overseer's don't like it when folks leave, bad fer business'")
+print("The guard walks you over to a room and pulls out a shield and sword.")
+print("'There's something special in it for you if you can beat 'em. Has a leg up for your first fight use this sword'")
+print("'It's the same kind that the guards use. The edges are serrated so it'll sting like a bitch after every cut.'")
+stinging = 1
+if stinging > 0:
+    player_damage = player_damage + stinging
+print("'Also, have a shield. Token likes to get aggressive so yer gonna want to be able to defend against some damage'")
+defense_value = 1
+# actual defense equation hear because reasons
+defense = player_defense + defense_value
+print("'Oh, and one more thing, {} isn't the name of a fighter. Everyone round 'ere has a nickname. How 'bout Ronin?'")
+print("'Ladies and gentleman, the tournament has begun! Our first match of the night is our current champion, Token!'")
+print("'The crowd beings to roar has a large man walks out onto the center area. The announcer begins introducing you.")
+print("'Going for the crown is a brand new fighter. Can I get a round of applause for... RONIN!")
+print("Though some of the crowd seems excited, the mostly just boo. Your opponent walks towards you.")
+print("You get to attack first. To attack pick one of your primary attacks. Select by typing 1, 2, or 3.")
+enemy_damage = 20
+enemy_health = 14
+print("1. Stab, stretch your sword towards an enemy. {} damage".format(player_damage))
+print("2. Block. Halves enemy damage.")
+player_attack = input("")
+if player_attack == "1":
+    enemy_health = enemy_health - player_damage
+elif player_attack == "2":
+    enemy_damage = enemy_damage - defense / enemy_damage
+print("{}".format(enemy_damage))
+print("{}".format(enemy_health))
+print("Token's turn")
+group_of_items = {1, 2, 3}  # a sequence or set will work here.
+num_to_select = 1  # set the number to select here.
+list_of_random_items = random.sample(group_of_items, num_to_select)
+attack = list_of_random_items[0]
+if attack == 1:
+    print("Token blocks")
+    player_damage = player_damage / 2
+    print("{}".format(player_damage))
+elif attack == 2:
+    print("Token swings")
+    player_health = player_health - enemy_damage
+    print("Health = {}%".format(player_health))
+elif attack == 3:
+    print("Token misses his attack")
+if enemy_health == 0:
+    print("gay")
