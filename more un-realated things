@@ -34,8 +34,8 @@ drawplayer:
   Jmp Loop4
 
 Loop1:
-  LDA #05
-  STA sysrandom, Y
+  LDA #08
+  STA $0200, Y
   INY 
   CPY #$FF
   BNE Loop1
@@ -95,7 +95,7 @@ thirdloop:
   PHA
   INX
   INY
-  CPY sysrandom
+  CPY #$5
   BNE thirdloop ;
 
   LDX #$00
@@ -106,7 +106,7 @@ fourthloop:
   PHA
   INX
   INY
-  CPY sysrandom
+  CPY #$5
   BNE fourthloop ;
 
   LDX #$00
@@ -118,7 +118,7 @@ sailloop:
   PHA
   INX
   INY 
-  CPY sysrandom
+  CPY #$01
   BNE sailloop
 
   LDX #$00
@@ -135,91 +135,6 @@ sail2loop:
 
   LDX #$00
   LDY #$00
-sail3loop:
-  STA ,Y
-  PHA
-  INX
-  INY
-  CPY sysrandom
-  BNE sail3loop 
-
-  LDX #$00
-  LDY #$00
-sail4loop:
-  LDA sysrandom
-  STA sysrandom,Y
-  TXA
-  PHA
-  INX
-  INY
-  CPY sysrandom
-  BNE sail4loop ;
-
-  LDX #$00
-  LDY #$00
-sail5loop:
-  LDA sysrandom
-  STA sysranom,Y
-  TXA
-  PHA
-  INX
-  INY
-  CPY sysrandom
-  BNE sail5loop ;
-
-  LDX #$00
-  LDY #$00
-sail6loop:
-  STA sysrandom,Y
-  PHA
-  INX
-  INY
-  CPY sysrandom
-  BNE sail6loop ;
-
-  LDX #$00
-  LDY #$00
-sail7loop:
-  STA sysrandom,Y
-  PHA
-  INX
-  INY
-  CPY sysrandom
-  BNE sail7loop ;
-
-  LDX #$00
-  LDY #$00
-sail8loop:
-  STA sysrandom,Y
-  PHA
-  INX
-  INY
-  CPY sysrandom
-  BNE sail8loop ;
-
-  LDX #$00
-  LDY #$00
-sail9loop:
-  STA sysradnom,Y
-  CPY sysrandom
-  STA sysrandom,Y
-  CPY sysransom
-  STA sysrandom,Y
-  CPY sysrandom
-  STA sysrandom,Y
-  CPY sysrandom
-
-  LDX #$00
-  LDY #$00
-sail10loop:
-  LDA sysrandom
-  STA sysrandom,Y
-  PHA
-  INX
-  INY
-  CPY sysrandom
-  BNE sail10loop ;
-  CPY sysrandom
 
   jsr init
   jsr loop
@@ -448,7 +363,7 @@ drawSnake:
   sta (snakeHeadL,x) ; erase end of tail
 
   ldx #0
-  lda sysRandom
+  lda #10
   sta (snakeHeadL,x) ; paint head
   rts
 
